@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AuthCheck from './AuthCheck'
+import { SignInButton, SignOutButton } from './buttons'
 
 export default function NavBar() {
   return (
@@ -11,8 +13,17 @@ export default function NavBar() {
         <li className='mr-4 hover:underline'>
           <Link href={'/about'}>About</Link>
         </li>
-        <li className='hover:underline'>
+        <li className='mr-4 hover:underline'>
           <Link href={'/leaderboard'}>Leaderboard</Link>
+        </li>
+        <li>
+          <SignInButton />
+        </li>
+        <li className='ml-4'>
+          {/*  @ts-ignore */}
+          <AuthCheck>
+            <SignOutButton />
+          </AuthCheck>
         </li>
       </ul>
     </nav>
