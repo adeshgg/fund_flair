@@ -5,7 +5,7 @@ import { SignInButton, SignOutButton } from './buttons'
 
 export default function NavBar() {
   return (
-    <nav className='flex justify-between bg-blue-600 p-4'>
+    <nav className='flex justify-between bg-blue-600 p-4 mb-4'>
       <Link href={'/'}>
         <Image src='/next.svg' alt='App Logo' width={216} height={30} />
       </Link>
