@@ -19,11 +19,9 @@ export async function POST(req: Request) {
     creatorId: user?.id,
   }
 
-  await prisma.fund.create({
+  const createdFund = await prisma.fund.create({
     data: fundData,
   })
 
-  return NextResponse.json({
-    fundData,
-  })
+  return NextResponse.json(createdFund)
 }

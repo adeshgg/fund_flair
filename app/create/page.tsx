@@ -9,17 +9,10 @@ export default async function CreateFund() {
 
   if (!session) redirect('/api/auth/signin')
 
-  const currentUserEmail = session.user?.email!
-  const user = await prisma.user.findUnique({
-    where: {
-      email: currentUserEmail,
-    },
-  })
-
   return (
     <>
       <h1>Create Fund</h1>
-      <FundForm user={user} />
+      <FundForm />
     </>
   )
 }

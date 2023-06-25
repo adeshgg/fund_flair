@@ -1,19 +1,19 @@
 'use client'
 
-export default function FundForm({ user }: any) {
+export default function FundForm() {
   const createFund = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
-    const tags = formData.get('tags') as String
-    tags.split(',')
+    let tags = formData.get('tags') as String
+    const tagsArray = tags?.split(',')
 
     const body = {
       name: formData.get('name'),
       description: formData.get('description'),
       usage: formData.get('usage'),
       amount: Number(formData.get('amount')),
-      tags,
+      tags: tagsArray.map(item => item.trim()),
     }
 
     const res = await fetch('/api/create', {
@@ -23,6 +23,8 @@ export default function FundForm({ user }: any) {
         'Content-Type': 'application/json',
       },
     })
+
+    console.log(res)
   }
 
   return (
