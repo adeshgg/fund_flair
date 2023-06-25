@@ -12,9 +12,8 @@ export default function FundForm({ user }: any) {
       name: formData.get('name'),
       description: formData.get('description'),
       usage: formData.get('usage'),
-      amount: formData.get('amount'),
+      amount: Number(formData.get('amount')),
       tags,
-      creatorId: user.id,
     }
 
     const res = await fetch('/api/create', {

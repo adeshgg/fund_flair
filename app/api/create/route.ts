@@ -14,12 +14,16 @@ export async function POST(req: Request) {
     },
   })
 
-  console.log({
-    data: data,
-    user: user,
+  const fundData = {
+    ...data,
+    creatorId: user?.id,
+  }
+
+  await prisma.fund.create({
+    data: fundData,
   })
+
   return NextResponse.json({
-    data: data,
-    user: user,
+    fundData,
   })
 }
