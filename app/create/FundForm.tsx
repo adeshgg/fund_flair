@@ -1,6 +1,11 @@
 'use client'
 
+import Image from 'next/image'
+import { useState } from 'react'
+
 export default function FundForm() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const createFund = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
@@ -16,6 +21,8 @@ export default function FundForm() {
       tags: tagsArray.map(item => item.trim()),
     }
 
+    setIsLoading(true)
+
     const res = await fetch('/api/create', {
       method: 'POST',
       body: JSON.stringify(body),
@@ -24,42 +31,83 @@ export default function FundForm() {
       },
     })
 
+    setIsLoading(false)
     console.log(res)
   }
 
   return (
-    <div>
-      <h2>Create your Fund</h2>
+    <div className='p-10'>
+      <h2 className='m-4 ml-0 font-bold text-1xl md:text-2xl lg:text-4xl'>
+        Create your Fund
+      </h2>
       <form onSubmit={createFund}>
-        <label htmlFor='name'>Name</label>
+        <label
+          htmlFor='name'
+          className='block mb-1 text-gray-700 text-sm font-semibold text-left'
+        >
+          Name
+        </label>
         <input
           type='text'
           name='name'
+          className='border border-gray-300 w-full p-2 rounded-md mb-4'
           placeholder='What is your fund called?'
         />
-        <label htmlFor='description'>Description</label>
+        <label
+          htmlFor='description'
+          className='block mb-1 text-gray-700 text-sm font-semibold text-left'
+        >
+          Description
+        </label>
         <textarea
           name='description'
           cols={30}
           rows={10}
+          className='border border-gray-300 w-full p-2 rounded-md mb-4'
           placeholder='Description your fund in detail'
         ></textarea>
-        <label htmlFor='usage'>Usage</label>
+        <label
+          htmlFor='usage'
+          className='block mb-1 text-gray-700 text-sm font-semibold text-left'
+        >
+          Usage
+        </label>
         <textarea
           name='usage'
           cols={30}
           rows={10}
+          className='border border-gray-300 w-full p-2 rounded-md mb-4'
           placeholder='How do you plan on using the fund amount?'
         ></textarea>
-        <label htmlFor='amount'>Amount (in $)</label>
-        <input type='number' name='amount' />
-        <label htmlFor='tags'>Tags</label>
+        <label
+          htmlFor='amount'
+          className='block mb-1 text-gray-700 text-sm font-semibold text-left'
+        >
+          Amount (in $)
+        </label>
+        <input
+          type='number'
+          name='amount'
+          className='border border-gray-300 w-full p-2 rounded-md mb-4'
+        />
+        <label
+          htmlFor='tags'
+          className='block mb-1 text-gray-700 text-sm font-semibold text-left'
+        >
+          Tags
+        </label>
         <input
           type='text'
           name='tags'
           placeholder='health, education, sports, ...'
+          className='border border-gray-300 w-full p-2 rounded-md mb-4'
         />
-        <button type='submit'>Create</button>
+        <button
+          type='submit'
+          className='block bg-blue-500 text-white py-2 px-4 rounded-md'
+        >
+          {isLoading ? 'Creating...' : 'Create'}
+        </button>
       </form>
     </div>
   )

@@ -11,7 +11,6 @@ export default async function CreateFund() {
 
   return (
     <>
-      <h1>Create Fund</h1>
       <FundForm />
     </>
   )
