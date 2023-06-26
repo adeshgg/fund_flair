@@ -52,17 +52,18 @@ model User {
 }
 
 model Fund {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  usage       String?
-  amount      Int
-  tags        String[]
-  creator     User     @relation("Creator", fields: [creatorId], references: [id], onDelete: Cascade)
-  creatorId   String
-  backers     User[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  name          String
+  description   String?
+  usage         String?
+  amount        Int
+  currentAmount Int      @default(0)
+  tags          String[]
+  creator       User     @relation("Creator", fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId     String
+  backers       User[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model VerificationToken {

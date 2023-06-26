@@ -20,6 +20,7 @@ export function SignInButton() {
           height={32}
           width={32}
           src={session.user?.image ?? '/vercel.svg'}
+          className='rounded-full cursor-pointer'
         />
       </Link>
     )

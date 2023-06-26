@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 
 export default function FundForm() {
@@ -105,6 +104,7 @@ export default function FundForm() {
         <button
           type='submit'
           className='block bg-blue-500 text-white py-2 px-4 rounded-md'
+          disabled={isLoading}
         >
           {isLoading ? 'Creating...' : 'Create'}
         </button>
