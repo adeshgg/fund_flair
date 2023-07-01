@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 
 interface Props {
+  id: string
   fundName: string
   fundTotalAmount: number
   currentAmount: number
@@ -14,12 +16,15 @@ const FundCard = ({
   currentAmount,
   tags,
   userName,
+  id,
 }: Props) => {
   const percentage = Math.min((currentAmount / fundTotalAmount) * 100, 100)
 
   return (
     <div className='bg-white shadow-xl m-5 rounded-lg p-4'>
-      <h3 className='text-lg font-semibold mb-2'>{fundName}</h3>
+      <Link href={`/funds/${id}`} className='cursor-pointer'>
+        <h3 className='text-lg font-semibold mb-2'>{fundName}</h3>
+      </Link>
       <p className='text-gray-500 mb-4'>Total Amount: {fundTotalAmount}</p>
       <div className='bg-gray-200 rounded-lg h-2 mb-4'>
         <div

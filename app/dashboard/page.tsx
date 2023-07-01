@@ -42,11 +42,12 @@ export default async function Dashboard() {
         {createdFunds.map(fund => {
           return (
             <FundCard
+              id={fund.id}
               fundName={fund.name}
               fundTotalAmount={fund.amount}
               currentAmount={fund.currentAmount}
               tags={fund.tags}
-              userName={user?.name}
+              userName={user?.name || ''}
               key={fund.id}
             />
           )
