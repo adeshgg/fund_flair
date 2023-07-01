@@ -1,9 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function FundForm() {
   const [isLoading, setIsLoading] = useState(false)
+
+  const router = useRouter()
 
   const createFund = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -31,7 +34,9 @@ export default function FundForm() {
     })
 
     setIsLoading(false)
-    console.log(res)
+    if (res.status === 200) {
+      router.push('/dashboard')
+    }
   }
 
   return (
@@ -82,7 +87,7 @@ export default function FundForm() {
           htmlFor='amount'
           className='block mb-1 text-gray-700 text-sm font-semibold text-left'
         >
-          Amount (in $)
+          Amount (in ₹)
         </label>
         <input
           type='number'

@@ -7,7 +7,7 @@ export default function NavBar() {
   return (
     <nav className='flex justify-between bg-blue-600 p-4 mb-4'>
       <Link href={'/'}>
-        <Image src='/next.svg' alt='App Logo' width={216} height={30} />
+        <Image src='/logo.png' alt='App Logo' width={75} height={75} />
       </Link>
       <ul className='flex items-center'>
         <li className='mr-4 hover:underline'>
