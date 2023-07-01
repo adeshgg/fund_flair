@@ -1,7 +1,16 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { prisma } from '@/lib/prisma'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 import CheckoutForm from './CheckoutForm'
 
 export default async function Fund({ params }: { params: { id: string } }) {
+  const session = await getServerSession(authOptions)
+  // console.log('session', session)
+  if (!session) {
+    redirect('/api/auth/signin')
+  }
+
   const fund = await prisma.fund.findFirst({
     where: {
       id: params.id,

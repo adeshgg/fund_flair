@@ -65,9 +65,9 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
         <button
           type='submit'
           className='block bg-blue-500 text-white py-2 px-4 rounded-md'
-          disabled={false}
+          disabled={isLoading}
         >
-          Invest
+          {isLoading ? 'Investing...' : 'Invest'}
         </button>
       </form>
     </div>
