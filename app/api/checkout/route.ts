@@ -23,7 +23,8 @@ export async function POST(req: Request) {
     ],
     mode: 'payment',
     // success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&amount=${data.amount}`,
-    success_url: `${origin}/success?fundId=${data.fundId}&amount=${data.amount}`,
+    // success_url: `${origin}/success?fundId=${data.fundId}&amount=${data.amount}`,
+    success_url: `${origin}/success`,
     cancel_url: `${origin}/cancel`,
   }
 

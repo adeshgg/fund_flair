@@ -15,8 +15,10 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
 
     const formData = new FormData(e.currentTarget)
 
+    const amount = formData.get('amount')
+
     const body = {
-      amount: formData.get('amount'),
+      amount: amount,
       fundId: fundId,
     }
 
@@ -35,6 +37,8 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
 
     const { sessionId } = await res.json()
     localStorage.setItem('fund-flair-sessionId', sessionId)
+    localStorage.setItem('fund-flair-amount', amount as string)
+    localStorage.setItem('fund-flair-fundId', fundId)
     const { error } = await stripe!.redirectToCheckout({
       sessionId,
     })

@@ -6,12 +6,14 @@ import { useState, useEffect } from 'react'
 
 export default function Success() {
   const searchParams = useSearchParams()
-  const fundId = searchParams.get('fundId')
-  const amount = searchParams.get('amount')
+  // const fundId = searchParams.get('fundId')
+  // const amount = searchParams.get('amount')
   const [isLoading, setIsLoading] = useState(false)
+  const sessionId = localStorage.getItem('fund-flair-sessionId')
+  const amount = Number(localStorage.getItem('fund-flair-amount'))
+  const fundId = localStorage.getItem('fund-flair-fundId')
 
   useEffect(() => {
-    const sessionId = localStorage.getItem('fund-flair-sessionId')
     if (sessionId) {
       setIsLoading(true)
       completeTransaction(sessionId)
@@ -24,9 +26,27 @@ export default function Success() {
       cache: 'no-store',
     })
     const res = await data.json()
-    console.log(res.session.amount_total / 100)
-    console.log(res.session.payment_status)
+    const amount = res.session.amount_total / 100
+    const paymentStatus = res.session.payment_status
+    const body = {
+      sessionId,
+      fundId,
+      amount,
+      paymentStatus,
+    }
+
+    const result = await fetch('/api/transact/', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    console.log(result)
     localStorage.removeItem('fund-flair-sessionId')
+    // localStorage.removeItem('fund-flair-amount')
+    // localStorage.removeItem('fund-flair-fundId')
 
     // fetch the fund
     // const fund = await prisma.fund.findFirst({
