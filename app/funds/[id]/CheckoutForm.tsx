@@ -18,8 +18,7 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
     const amount = formData.get('amount')
 
     const body = {
-      amount: amount,
-      fundId: fundId,
+      amount,
     }
 
     setIsLoading(true)
@@ -71,7 +70,7 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
           className='block bg-blue-500 text-white py-2 px-4 rounded-md'
           disabled={isLoading}
         >
-          {isLoading ? 'Investing...' : 'Invest'}
+          {isLoading ? 'Redirecting...' : 'Invest'}
         </button>
       </form>
     </div>

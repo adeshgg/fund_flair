@@ -13,7 +13,6 @@ export async function POST(req: Request) {
   })
 
   const body = await req.json()
-  //   const sessionId = body.sessionId
   const fundId = body.fundId
   const amount = body.amount
   const paymentStatus = body.paymentStatus
@@ -40,6 +39,7 @@ export async function POST(req: Request) {
         backedFunds: {
           connect: { id: fund?.id! },
         },
+        rewards: (user?.rewards || 0) + Math.floor(amount * 0.01),
       },
       include: {
         backedFunds: true,
@@ -68,5 +68,5 @@ export async function POST(req: Request) {
     })
   }
 
-  return NextResponse.json({ msg: 'Something F*ed up' })
+  return NextResponse.json({ msg: 'Error' })
 }

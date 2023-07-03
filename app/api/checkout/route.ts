@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  // @ts-ignore
   apiVersion: '2020-08-27',
 })
 
@@ -28,12 +29,11 @@ export async function POST(req: Request) {
     cancel_url: `${origin}/cancel`,
   }
 
+  // @ts-ignore
   const checkoutSession = await stripe.checkout.sessions.create(params)
   console.log(checkoutSession.id)
-  console.log(data.fundId)
   return NextResponse.json({
     sessionId: checkoutSession.id,
-    fundId: data.fundId,
   })
 }
 
