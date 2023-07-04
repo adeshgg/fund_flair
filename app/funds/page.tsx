@@ -1,7 +1,7 @@
 'use client'
 import FundCard from '@/components/FundCard'
+import Loading from '@/components/Loading'
 import { useEffect, useState } from 'react'
-import { HashLoader } from 'react-spinners'
 
 interface Fund {
   id: string
@@ -88,9 +88,7 @@ export default function Funds() {
       </form>
       <div>
         {isLoading ? (
-          <div className='flex w-full h-full justify-center align-middle mt-36'>
-            <HashLoader loading={isLoading} color={'#1D4ED8'} />
-          </div>
+          <Loading />
         ) : (
           funds.map(fund => {
             return (

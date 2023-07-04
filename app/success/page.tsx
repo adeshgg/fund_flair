@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Loading from '@/components/Loading'
 
 export default function Success() {
   const router = useRouter()
@@ -49,8 +50,17 @@ export default function Success() {
 
   return (
     <div>
-      Thank you for your valuble contribution. We have recieved {amount} INR.
-      Please don't close the window, we are redirecting you to the home page.
+      {isLoading ? (
+        <div>
+          We are processing your payment. Please don't close the window.
+          <Loading />
+        </div>
+      ) : (
+        <div>
+          Thank you for your valuble contribution. We have recieved your
+          payment.
+        </div>
+      )}
     </div>
   )
 }
