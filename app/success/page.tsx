@@ -1,7 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Success() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const sessionId = localStorage.getItem('fund-flair-sessionId')
   const amount = Number(localStorage.getItem('fund-flair-amount'))
@@ -35,16 +37,20 @@ export default function Success() {
       },
     })
 
-    console.log(result)
     localStorage.removeItem('fund-flair-sessionId')
+
+    console.log(result)
+    if (result.status === 200) {
+      router.push('/')
+    }
 
     setIsLoading(false)
   }
 
   return (
     <div>
-      Thank you for your valuble contribution. We have recieved {amount} INR for{' '}
-      {fundId} Fund.
+      Thank you for your valuble contribution. We have recieved {amount} INR.
+      Please don't close the window, we are redirecting you to the home page.
     </div>
   )
 }
