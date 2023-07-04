@@ -32,9 +32,6 @@ export default async function Funds() {
       </div>
 
       <div>
-        <h3 className='m-5 ml-8 text-2xl font-semibold text-gray-800'>
-          Created
-        </h3>
         {updatedFund.map(fund => {
           return (
             <FundCard
