@@ -1,7 +1,6 @@
 import FundCard from '@/components/FundCard'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
-import { SearchIcon } from '@heroicons/react/solid'
 
 export default async function Home() {
   const feedFunds = await prisma.fund.findMany({

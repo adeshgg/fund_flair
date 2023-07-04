@@ -1,6 +1,7 @@
 'use client'
 import FundCard from '@/components/FundCard'
 import { useEffect, useState } from 'react'
+import { HashLoader } from 'react-spinners'
 
 interface Fund {
   id: string
@@ -17,12 +18,15 @@ interface Fund {
 
 export default function Funds() {
   const [funds, setFunds] = useState<[] | Fund[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const fetchInitialFunds = async () => {
+      setIsLoading(true)
       const res = await fetch('/api/search')
       const data = await res.json()
       setFunds(data)
+      setIsLoading(false)
     }
     fetchInitialFunds()
   }, [])
@@ -33,9 +37,11 @@ export default function Funds() {
     const formData = new FormData(e.currentTarget)
     const search = formData.get('search')
 
+    setIsLoading(true)
     const res = await fetch(`/api/search/${search}`)
     const data = await res.json()
     setFunds(data)
+    setIsLoading(false)
   }
 
   return (
@@ -81,19 +87,25 @@ export default function Funds() {
         </div>
       </form>
       <div>
-        {funds.map(fund => {
-          return (
-            <FundCard
-              id={fund.id}
-              fundName={fund.name}
-              fundTotalAmount={fund.amount}
-              currentAmount={fund.currentAmount}
-              tags={fund.tags}
-              userName={fund.username || ''}
-              key={fund.id}
-            />
-          )
-        })}
+        {isLoading ? (
+          <div className='flex w-full h-full justify-center align-middle mt-36'>
+            <HashLoader loading={isLoading} color={'#1D4ED8'} />
+          </div>
+        ) : (
+          funds.map(fund => {
+            return (
+              <FundCard
+                id={fund.id}
+                fundName={fund.name}
+                fundTotalAmount={fund.amount}
+                currentAmount={fund.currentAmount}
+                tags={fund.tags}
+                userName={fund.username || ''}
+                key={fund.id}
+              />
+            )
+          })
+        )}
       </div>
     </div>
   )
