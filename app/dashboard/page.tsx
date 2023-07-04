@@ -18,7 +18,28 @@ export default async function Dashboard() {
     where: {
       email: currentUserEmail,
     },
+    include: {
+      backedFunds: true,
+    },
   })
+
+  let backedFundsIds: String[] = []
+  user?.backedFunds.forEach(fund => backedFundsIds.push(fund.id))
+  backedFundsIds = Array.from(new Set(backedFundsIds))
+
+  const backedFunds = await Promise.all(
+    backedFundsIds.map(
+      async fundId =>
+        await prisma.fund.findFirst({
+          where: {
+            id: fundId,
+          },
+          include: {
+            creator: true,
+          },
+        })
+    )
+  )
 
   const createdFunds = await prisma.fund.findMany({
     where: {
@@ -49,6 +70,24 @@ export default async function Dashboard() {
               tags={fund.tags}
               userName={user?.name || ''}
               key={fund.id}
+            />
+          )
+        })}
+      </div>
+      <div>
+        <h3 className='m-5 ml-8 text-2xl font-semibold text-gray-800'>
+          Backed
+        </h3>
+        {backedFunds.map(fund => {
+          return (
+            <FundCard
+              id={fund?.id!}
+              fundName={fund?.name!}
+              fundTotalAmount={fund?.amount!}
+              currentAmount={fund?.currentAmount!}
+              tags={fund?.tags!}
+              userName={fund?.creator.name || ''}
+              key={fund?.id}
             />
           )
         })}
