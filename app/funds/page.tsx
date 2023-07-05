@@ -89,7 +89,7 @@ export default function Funds() {
       <div>
         {isLoading ? (
           <Loading />
-        ) : (
+        ) : funds.length > 0 ? (
           funds.map(fund => {
             return (
               <FundCard
@@ -103,6 +103,8 @@ export default function Funds() {
               />
             )
           })
+        ) : (
+          <p className='m-8'>No such funds found!</p>
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import FundCard from '@/components/FundCard'
 import { prisma } from '@/lib/prisma'
-import Link from 'next/link'
+import { ButtonLink } from '@/components/Button'
 
 export default async function Home() {
   const feedFunds = await prisma.fund.findMany({
@@ -32,16 +32,22 @@ export default async function Home() {
         </p>
       </section>
       <section className='m-10 flex justify-around mb-20'>
-        <Link href={'/funds'} className='cursor-pointer bg-cyan-200 rounded'>
+        {/* <Link href={'/funds'} className='cursor-pointer bg-cyan-200 rounded'>
           <button className='bg-gradient-to-r from-purple-900 via-indigo-700 to-pink-700 bg-clip-text text-transparent text-2xl font-bold py-2 px-4 rounded'>
             Explore Funds
           </button>
-        </Link>
-        <Link href={'/create'} className='cursor-pointer bg-cyan-200 rounded'>
+        </Link> */}
+        <ButtonLink href={'/funds'} className=''>
+          Explore Funds
+        </ButtonLink>
+        {/* <Link href={'/create'} className='cursor-pointer bg-cyan-200 rounded'>
           <button className='bg-gradient-to-r from-purple-900 via-indigo-700 to-pink-700 bg-clip-text text-transparent text-2xl font-bold py-2 px-4 rounded'>
             Create Funds
           </button>
-        </Link>
+        </Link> */}
+        <ButtonLink href={'/create'} className=''>
+          Create Funds
+        </ButtonLink>
       </section>
 
       <section>
