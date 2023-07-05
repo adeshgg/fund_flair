@@ -1,8 +1,8 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 export default function Modal({ price, setShowModal }) {
   const [open, setOpen] = useState(true)
@@ -83,7 +83,7 @@ export default function Modal({ price, setShowModal }) {
                       },
                       body: JSON.stringify({ price }),
                     })
-                    rounter.push('/')
+                    toast.success('Item Redeemed')
                   }}
                 >
                   Redeem
