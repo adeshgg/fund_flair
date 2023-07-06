@@ -6,18 +6,17 @@ import Loading from '@/components/Loading'
 export default function Success() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
-  const sessionId = localStorage.getItem('fund-flair-sessionId')
-  const amount = Number(localStorage.getItem('fund-flair-amount'))
-  const fundId = localStorage.getItem('fund-flair-fundId')
 
   useEffect(() => {
-    if (sessionId) {
+    if (localStorage.getItem('fund-flair-sessionId') != null) {
+      const sessionId = localStorage.getItem('fund-flair-sessionId')
+      const fundId = localStorage.getItem('fund-flair-fundId')
       setIsLoading(true)
-      completeTransaction(sessionId)
+      completeTransaction(sessionId!, fundId!)
     }
   }, [])
 
-  async function completeTransaction(sessionId: string) {
+  async function completeTransaction(sessionId: string, fundId: string) {
     const data = await fetch(`/api/checkout/${sessionId}`, {
       cache: 'no-store',
     })

@@ -76,7 +76,7 @@ export default function Products() {
 
   useEffect(() => {
     fetchRewards()
-  }, [])
+  }, [showModal])
 
   async function fetchRewards() {
     const res = await fetch('/api/rewards')

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 export default function Modal({ price, setShowModal }) {
   const [open, setOpen] = useState(true)
-  const rounter = useRouter()
+  const router = useRouter()
   const cancelButtonRef = useRef(null)
 
   return (
@@ -75,7 +75,6 @@ export default function Modal({ price, setShowModal }) {
                   className='w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm'
                   onClick={async () => {
                     setOpen(false)
-                    setShowModal(false)
                     const res = await fetch('/api/redeem', {
                       method: 'POST',
                       headers: {
@@ -83,7 +82,9 @@ export default function Modal({ price, setShowModal }) {
                       },
                       body: JSON.stringify({ price }),
                     })
+                    setShowModal(false)
                     toast.success('Item Redeemed')
+                    // router.push('/products')
                   }}
                 >
                   Redeem
