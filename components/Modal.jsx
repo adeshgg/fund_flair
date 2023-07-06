@@ -1,12 +1,10 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
-import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 export default function Modal({ price, setShowModal }) {
   const [open, setOpen] = useState(true)
-  const router = useRouter()
   const cancelButtonRef = useRef(null)
 
   return (
