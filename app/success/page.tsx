@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Loading from '@/components/Loading'
+import { toast } from 'react-toastify'
 
 export default function Success() {
   const router = useRouter()
@@ -41,6 +42,10 @@ export default function Success() {
 
     console.log(result)
     if (result.status === 200) {
+      toast.success('Your payment was successful')
+      router.push('/')
+    } else {
+      toast.error('Your payment was unsuccessful')
       router.push('/')
     }
 
@@ -57,7 +62,7 @@ export default function Success() {
       ) : (
         <div>
           Thank you for your valuble contribution. We have recieved your
-          payment.
+          payment. Redirecting...
         </div>
       )}
     </div>

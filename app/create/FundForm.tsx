@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 export default function FundForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -35,8 +36,11 @@ export default function FundForm() {
 
     setIsLoading(false)
     if (res.status === 200) {
-      router.push('/dashboard')
-    }
+      toast.success('Fund created')
+      setTimeout(() => {
+        router.push('/dashboard')
+      }, 500)
+    } else toast.error('Please try again')
   }
 
   return (

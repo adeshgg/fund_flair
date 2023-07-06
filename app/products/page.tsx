@@ -1,8 +1,6 @@
 'use client'
 
 import clsx from 'clsx'
-import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Modal from '@/components/Modal'
 
@@ -65,14 +63,9 @@ const products = [
 ]
 
 export default function Products() {
-  const { data: session, status } = useSession()
   const [rewards, setRewards] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const [productPrice, setProductPrice] = useState(0)
-
-  if (status === 'unauthenticated') {
-    redirect('/api/auth/signin')
-  }
 
   useEffect(() => {
     fetchRewards()
