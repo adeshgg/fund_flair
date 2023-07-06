@@ -1,6 +1,6 @@
 import FundCard from '@/components/FundCard'
 import { prisma } from '@/lib/prisma'
-import { ButtonLink } from '@/components/Button'
+import Link from 'next/link'
 
 export default async function Home() {
   const feedFunds = await prisma.fund.findMany({
@@ -32,22 +32,16 @@ export default async function Home() {
         </p>
       </section>
       <section className='m-10 flex justify-around mb-20'>
-        {/* <Link href={'/funds'} className='cursor-pointer bg-cyan-200 rounded'>
-          <button className='bg-gradient-to-r from-purple-900 via-indigo-700 to-pink-700 bg-clip-text text-transparent text-2xl font-bold py-2 px-4 rounded'>
+        <Link href={'/funds'} className='cursor-pointer rounded'>
+          <button className=' h-full w-full py-3 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600'>
             Explore Funds
           </button>
-        </Link> */}
-        <ButtonLink href={'/funds'} className=''>
-          Explore Funds
-        </ButtonLink>
-        {/* <Link href={'/create'} className='cursor-pointer bg-cyan-200 rounded'>
-          <button className='bg-gradient-to-r from-purple-900 via-indigo-700 to-pink-700 bg-clip-text text-transparent text-2xl font-bold py-2 px-4 rounded'>
+        </Link>
+        <Link href={'/create'} className='cursor-pointe rounded'>
+          <button className='rounded-md border h-full w-full py-3 px-6 text-base font-semibold tracking-tight focus:outline-none border-blue-300 text-blue-600 hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:text-blue-600/70 disabled:opacity-40 disabled:hover:border-blue-300 disabled:hover:bg-transparent'>
             Create Funds
           </button>
-        </Link> */}
-        <ButtonLink href={'/create'} className=''>
-          Create Funds
-        </ButtonLink>
+        </Link>
       </section>
 
       <section>

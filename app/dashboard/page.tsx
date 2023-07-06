@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import { prisma } from '@/lib/prisma'
 import FundCard from '@/components/FundCard'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Dashboard - Fund Flair',
@@ -49,11 +50,20 @@ export default async function Dashboard() {
 
   return (
     <div>
-      <div className='ml-8'>
-        <h1 className='text-4xl font-bold text-gray-800'>Dashboard</h1>
-        <p className='text-base text-gray-800 leading-relaxed mb-3'>
-          Look at all your good word!
-        </p>
+      <div className='flex align-middle justify-between'>
+        <div className='ml-8'>
+          <h1 className='text-4xl font-bold text-gray-800'>Dashboard</h1>
+          <p className='text-base text-gray-800 leading-relaxed mb-3'>
+            Look at all your good word!
+          </p>
+        </div>
+        <div className='self-center'>
+          <Link href={'/products'} className='cursor-pointer rounded mr-8'>
+            <button className=' py-3 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600'>
+              Redeem Coins
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div>

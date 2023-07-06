@@ -8,7 +8,7 @@ const products = [
   {
     id: 1,
     name: 'Cap',
-    color: 'White Colored Cap',
+    description: 'White Colored Cap',
     href: '#',
     imageSrc:
       'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500',
@@ -18,7 +18,7 @@ const products = [
   {
     id: 1,
     name: 'Zip Tote Basket',
-    color: 'White and black',
+    description: 'Carry your stuff in style',
     href: '#',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg',
@@ -29,34 +29,32 @@ const products = [
   {
     id: 1,
     name: 'Desk Globe',
-    color: 'World at fingertips',
+    description: 'World at fingertips',
     href: '#',
     imageSrc:
       'https://images.unsplash.com/photo-1593632717071-218c1d85c663?w=500&h=500',
-    imageAlt:
-      'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+    imageAlt: 'Desk Globe on white table',
     price: 5000,
   },
   {
     id: 1,
     name: 'Shoes',
-    color: 'Vibrant colors',
+    description: 'Shoes for all occasions',
     href: '#',
     imageSrc:
       'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&h=500',
-    imageAlt:
-      'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+    imageAlt: 'A Colorful pair of shoes',
     price: 10000,
   },
   {
     id: 1,
     name: 'Digital Tablet',
-    color: 'Create what you love',
+    description: 'Create what you love',
     href: '#',
     imageSrc:
       'https://images.unsplash.com/photo-1585770536735-27993a080586?w=500&h=500',
     imageAlt:
-      'Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls.',
+      'Digital Tablet with white screen, black canvas back, and white pencil.',
     price: 15000,
   },
   // More products...
@@ -97,7 +95,9 @@ export default function Products() {
                 <h3 className='text-sm font-medium text-gray-900'>
                   {product.name}
                 </h3>
-                <p className='mt-1 text-sm text-gray-500'>{product.color}</p>
+                <p className='mt-1 text-sm text-gray-500'>
+                  {product.description}
+                </p>
               </div>
               <div className='absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden'>
                 <div
