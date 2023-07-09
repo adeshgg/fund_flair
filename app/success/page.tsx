@@ -40,7 +40,6 @@ export default function Success() {
 
     localStorage.removeItem('fund-flair-sessionId')
 
-    console.log(result)
     if (result.status === 200) {
       toast.success('Your payment was successful')
       router.push('/')

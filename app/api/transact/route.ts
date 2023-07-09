@@ -59,9 +59,6 @@ export async function POST(req: Request) {
       },
     })
 
-    console.log('updatedUser', updatedUser)
-    console.log('updatedFund', updatedFund)
-
     return NextResponse.json({
       updatedUser,
       updatedFund,

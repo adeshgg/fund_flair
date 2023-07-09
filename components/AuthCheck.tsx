@@ -5,7 +5,6 @@ import React from 'react'
 
 export default function AuthCheck({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession()
-  console.log(session, status)
 
   if (status === 'authenticated') {
     return <>{children}</>

@@ -31,7 +31,6 @@ export async function POST(req: Request) {
 
   // @ts-ignore
   const checkoutSession = await stripe.checkout.sessions.create(params)
-  console.log(checkoutSession.id)
   return NextResponse.json({
     sessionId: checkoutSession.id,
   })

@@ -6,7 +6,6 @@ import CheckoutForm from './CheckoutForm'
 
 export default async function Fund({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions)
-  // console.log('session', session)
   if (!session) {
     redirect('/api/auth/signin')
   }
