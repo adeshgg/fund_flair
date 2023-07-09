@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
+// @ts-ignore
 export async function GET(req: Request, context) {
   const { slug } = context.params
   const funds = await prisma.fund.findMany({

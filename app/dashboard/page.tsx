@@ -33,6 +33,7 @@ export default async function Dashboard() {
       async fundId =>
         await prisma.fund.findFirst({
           where: {
+            // @ts-ignore
             id: fundId,
           },
           include: {
@@ -96,6 +97,7 @@ export default async function Dashboard() {
               fundTotalAmount={fund?.amount!}
               currentAmount={fund?.currentAmount!}
               tags={fund?.tags!}
+              // @ts-ignore
               userName={fund?.creator.name || ''}
               key={fund?.id}
             />
