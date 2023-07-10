@@ -70,7 +70,9 @@ export default function Products() {
   }, [showModal])
 
   async function fetchRewards() {
-    const res = await fetch('/api/rewards')
+    const res = await fetch('/api/rewards', {
+      cache: 'no-store',
+    })
     const data = await res.json()
     setRewards(data.rewards)
   }

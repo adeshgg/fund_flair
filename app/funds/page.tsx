@@ -23,7 +23,9 @@ export default function Funds() {
   useEffect(() => {
     const fetchInitialFunds = async () => {
       setIsLoading(true)
-      const res = await fetch('/api/search')
+      const res = await fetch('/api/search', {
+        cache: 'no-store',
+      })
       const data = await res.json()
       setFunds(data)
       setIsLoading(false)
