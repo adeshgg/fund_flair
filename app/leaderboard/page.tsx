@@ -1,7 +1,7 @@
 import UserCard from '@/components/UserCard'
 import { prisma } from '@/lib/prisma'
 
-export const fetchCache = 'only-no-store'
+export const dynamic = 'force-dynamic'
 
 export default async function LeaderBoard() {
   const users = await prisma.user.findMany({
