@@ -2,7 +2,7 @@ import FundCard from '@/components/FundCard'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 
-export const fetchCache = 'only-no-store'
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   const feedFunds = await prisma.fund.findMany({
