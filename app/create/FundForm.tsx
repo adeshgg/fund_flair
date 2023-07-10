@@ -39,6 +39,7 @@ export default function FundForm() {
       toast.success('Fund created')
       setTimeout(() => {
         router.push('/dashboard')
+        router.refresh()
       }, 500)
     } else toast.error('Please try again')
   }
