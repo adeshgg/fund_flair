@@ -10,6 +10,8 @@ export const metadata = {
   description: 'Dashboard page for Fund Flair',
 }
 
+export const fetchCache = 'only-no-store'
+
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)
   if (!session) redirect('/api/auth/signin')

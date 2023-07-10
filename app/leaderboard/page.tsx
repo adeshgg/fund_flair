@@ -1,6 +1,8 @@
 import UserCard from '@/components/UserCard'
 import { prisma } from '@/lib/prisma'
 
+export const fetchCache = 'only-no-store'
+
 export default async function LeaderBoard() {
   const users = await prisma.user.findMany({
     orderBy: {
