@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
+import { useRouter } from 'next/navigation'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -9,6 +10,7 @@ const stripePromise = loadStripe(
 
 export default function CheckoutForm({ fundId }: { fundId: string }) {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleInvest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -45,6 +47,8 @@ export default function CheckoutForm({ fundId }: { fundId: string }) {
     if (error) {
       console.error(error)
     }
+
+    router.refresh()
   }
 
   return (

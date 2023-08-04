@@ -1,6 +1,7 @@
 'use client'
 import FundCard from '@/components/FundCard'
 import Loading from '@/components/Loading'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 interface Fund {
@@ -19,6 +20,7 @@ interface Fund {
 export default function Funds() {
   const [funds, setFunds] = useState<[] | Fund[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const fetchInitialFunds = async () => {
@@ -31,6 +33,7 @@ export default function Funds() {
       setIsLoading(false)
     }
     fetchInitialFunds()
+    router.refresh()
   }, [])
 
   const fetchFunds = async (e: React.FormEvent<HTMLFormElement>) => {

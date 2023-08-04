@@ -42,6 +42,8 @@ export default function FundForm() {
         router.refresh()
       }, 500)
     } else toast.error('Please try again')
+
+    router.refresh()
   }
 
   return (
