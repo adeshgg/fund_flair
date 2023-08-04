@@ -11,6 +11,7 @@ export const metadata = {
 }
 
 export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)
