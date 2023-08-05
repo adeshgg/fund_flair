@@ -5,7 +5,7 @@ import { SignInButton, SignOutButton } from './buttons'
 
 export default function NavBar() {
   return (
-    <nav className='flex justify-between bg-blue-600 p-4 mb-4 text-white font-bold'>
+    <nav className='flex justify-between bg-blue-600 p-4 mb-4 text-white text-sm sm:text-xl'>
       <Link href={'/'}>
         <Image src='/logo.png' alt='App Logo' width={75} height={75} />
       </Link>

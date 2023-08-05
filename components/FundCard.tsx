@@ -32,7 +32,7 @@ const FundCard = ({
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
-      <div className='mb-4'>
+      <div className='mb-4 flex flex-wrap gap-2'>
         {tags.map((tag, index) => (
           <span
             key={index}

@@ -54,15 +54,15 @@ export default async function Dashboard() {
 
   return (
     <div>
-      <div className='flex align-middle justify-between'>
+      <div className='flex flex-col gap-5 sm:flex-row sm:justify-between'>
         <div className='ml-8'>
           <h1 className='text-4xl font-bold text-gray-800'>Dashboard</h1>
           <p className='text-base text-gray-800 leading-relaxed mb-3'>
             Look at all your good word!
           </p>
         </div>
-        <div className='self-center'>
-          <Link href={'/products'} className='cursor-pointer rounded mr-8'>
+        <div className='sm:self-center ml-8'>
+          <Link href={'/products'} className='cursor-pointer rounded sm:mr-8'>
             <button className=' py-3 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600'>
               Redeem Coins
             </button>

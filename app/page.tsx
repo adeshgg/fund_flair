@@ -34,7 +34,7 @@ export default async function Home() {
           Support. Discover. Empower.
         </p>
       </section>
-      <section className='m-10 flex justify-around mb-20'>
+      <section className='m-10 mb-20 flex flex-col gap-5 sm:flex-row sm:justify-around'>
         <Link href={'/funds'} className='cursor-pointer rounded'>
           <button className=' h-full w-full py-3 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600'>
             Explore Funds
