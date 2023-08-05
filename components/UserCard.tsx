@@ -6,11 +6,11 @@ interface Props {
 
 export default function UserCard({ username, image, rewards }: Props) {
   return (
-    <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3'>
-      <div className='md:flex'>
+    <div className='sm:max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3'>
+      <div className='flex gap-5'>
         <div className='md:flex-shrink-0'>
           <img
-            className='h-48 w-full object-cover md:w-48'
+            className='h-32 w-32 md:h-48 object-cover md:w-48'
             src={image}
             alt={username}
           />
