@@ -14,7 +14,7 @@ export default function NavBar() {
           <Link href={'/about'}>About</Link>
         </li>
         <li className='mr-4 hover:underline'>
-          <Link href={'/leaderboard'}>Leaderboard</Link>
+          <a href={'/leaderboard'}>Leaderboard</a>
         </li>
         <li>
           <SignInButton />
